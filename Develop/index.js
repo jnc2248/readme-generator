@@ -128,6 +128,7 @@ function generateReadme () {
 };
 
 const addBadge = (answers) => {
+    
     if (answers.license === 'MIT License') {
         answersNew.push( { badge: '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'});
     } else if (answers.license === 'Apache License 2.0') {
@@ -146,42 +147,49 @@ const addBadge = (answers) => {
 };
 
 const createLicense = (answers) => {
+
     if (answers.license === 'MIT License') {
         const licenseTemplate = licensing.mit(answersNew);
 
         fs.writeFile('LICENSE.md', licenseTemplate, (err) =>
             (err) ? console.error(err) : console.log("Successfully generated LICENSE.md!")
         );
+
     } else if (answers.license === 'Apache License 2.0') {
         const licenseTemplate = licensing.apache(answersNew);
 
         fs.writeFile('LICENSE.md', licenseTemplate, (err) =>
             (err) ? console.error(err) : console.log("Successfully generated LICENSE.md!")
         );
+        
     } else if (answers.license === 'ISC License') {
         const licenseTemplate = licensing.isc(answersNew);
 
         fs.writeFile('LICENSE.md', licenseTemplate, (err) =>
             (err) ? console.error(err) : console.log("Successfully generated LICENSE.md!")
         );
+
     } else if (answers.license === 'GNU General Public License v3.0') {
         const licenseTemplate = licensing.gnu(answersNew);
 
         fs.writeFile('LICENSE.md', licenseTemplate, (err) =>
             (err) ? console.error(err) : console.log("Successfully generated LICENSE.md!")
         );
+
     } else if (answers.license === 'Mozilla Public License 2.0') {
         const licenseTemplate = licensing.mozilla(answersNew);
 
         fs.writeFile('LICENSE.md', licenseTemplate, (err) =>
             (err) ? console.error(err) : console.log("Successfully generated LICENSE.md!")
         );
+
     } else if (answers.license === 'Boost Software License 1.0') {
         const licenseTemplate = licensing.boost(answersNew);
 
         fs.writeFile('LICENSE.md', licenseTemplate, (err) =>
             (err) ? console.error(err) : console.log("Successfully generated LICENSE.md!")
         );
+
     } else if (answers.license === 'The Unlicense') {
         const licenseTemplate = licensing.unLicense(answersNew);
 
