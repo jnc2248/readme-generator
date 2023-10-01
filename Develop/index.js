@@ -1,8 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const licensing = require('./licenses.js')
 
 const answersNew = [];
-const writeToFile = ([{ fullName, github, email, title, description, installation, usage, license, year, contributing, tests }, { badge }]) =>
+const writeToFile = ([{ fullName, github, email, title, description, installation, usage, license, year, contributing, testing }, { badge }]) =>
 `
 # ${title}
 ${badge}
@@ -19,7 +20,7 @@ ${badge}
 
 5. [Contributing](#contributing)
 
-6. [Tests] (#test)
+6. [Testing] (#testing)
 
 7. [Questions] (#questions)
 
@@ -37,15 +38,15 @@ ${usage}
 
 ## License
 
-This application is covered under the ${license} - ${year} ${fullName}. Please refer to LICENSE.md for more details.
+This application is covered under the ${license} (c) ${year} ${fullName}. Please refer to LICENSE.md for more details.
 
 ## Contributing
 
 ${contributing}
 
-## Tests
+## Testing
 
-${tests}
+${testing}
 
 ## Questions
 
@@ -59,7 +60,7 @@ function generateReadme () {
             {
                 type: 'input',
                 name: 'fullName',
-                message: 'Hello! What is your name?',
+                message: 'Hello! Who created this project?',
             },
             {
                 type: 'input',
@@ -116,13 +117,8 @@ function generateReadme () {
         .then((answers) => {
 
             answersNew.push(answers);
-
             addBadge(answers);
-
-            console.log(answers, answersNew);
-
-            const [{ fullName, github, email, title, description, installation, usage, license, year, contributing, tests, questions, badge }] = answersNew;
-
+            createLicense(answers);
             const readmeTemplate = writeToFile(answersNew);
 
             fs.writeFile('README.md', readmeTemplate, (err) =>
@@ -146,6 +142,52 @@ const addBadge = (answers) => {
         answersNew.push( { badge: '[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)'});
     } else if (answers.license === 'The Unlicense') {
         answersNew.push( { badge: '[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)'});
+    };
+};
+
+const createLicense = (answers) => {
+    if (answers.license === 'MIT License') {
+        const licenseTemplate = licensing.mit(answersNew);
+
+        fs.writeFile('LICENSE.md', licenseTemplate, (err) =>
+            (err) ? console.error(err) : console.log("Successfully generated LICENSE.md!")
+        );
+    } else if (answers.license === 'Apache License 2.0') {
+        const licenseTemplate = licensing.apache(answersNew);
+
+        fs.writeFile('LICENSE.md', licenseTemplate, (err) =>
+            (err) ? console.error(err) : console.log("Successfully generated LICENSE.md!")
+        );
+    } else if (answers.license === 'ISC License') {
+        const licenseTemplate = licensing.isc(answersNew);
+
+        fs.writeFile('LICENSE.md', licenseTemplate, (err) =>
+            (err) ? console.error(err) : console.log("Successfully generated LICENSE.md!")
+        );
+    } else if (answers.license === 'GNU General Public License v3.0') {
+        const licenseTemplate = licensing.gnu(answersNew);
+
+        fs.writeFile('LICENSE.md', licenseTemplate, (err) =>
+            (err) ? console.error(err) : console.log("Successfully generated LICENSE.md!")
+        );
+    } else if (answers.license === 'Mozilla Public License 2.0') {
+        const licenseTemplate = licensing.mozilla(answersNew);
+
+        fs.writeFile('LICENSE.md', licenseTemplate, (err) =>
+            (err) ? console.error(err) : console.log("Successfully generated LICENSE.md!")
+        );
+    } else if (answers.license === 'Boost Software License 1.0') {
+        const licenseTemplate = licensing.boost(answersNew);
+
+        fs.writeFile('LICENSE.md', licenseTemplate, (err) =>
+            (err) ? console.error(err) : console.log("Successfully generated LICENSE.md!")
+        );
+    } else if (answers.license === 'The Unlicense') {
+        const licenseTemplate = licensing.unLicense(answersNew);
+
+        fs.writeFile('LICENSE.md', licenseTemplate, (err) =>
+            (err) ? console.error(err) : console.log("Successfully generated LICENSE.md!")
+        );
     };
 };
 
