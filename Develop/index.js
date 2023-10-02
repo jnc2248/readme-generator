@@ -8,6 +8,10 @@ const writeToFile = ([{ fullName, github, email, title, description, installatio
 # ${title}
 ${badge}
 
+## Description
+
+${description}
+
 ## Table of Contents
 
 1. [Description](#description)
@@ -24,10 +28,6 @@ ${badge}
 
 7. [Questions] (#questions)
 
-## Description
-
-${description}
-
 ## Installation
 
 ${installation}
@@ -38,7 +38,7 @@ ${usage}
 
 ## License
 
-This application is covered under the ${license} (c) ${year} ${fullName}. Please refer to LICENSE.md for more details.
+This application is covered under the ${license} (c) ${year}, ${fullName}. Please refer to LICENSE.md for more details.
 
 ## Contributing
 
@@ -50,7 +50,7 @@ ${testing}
 
 ## Questions
 
-If you have questions, please refer to my [GitHub profile](https://github.com/${github}). You may also reach me at ${email}.
+Please refer to my [GitHub profile](https://github.com/${github}) to answer any questions you may have about this project. To ask additional questions or report any issues, please email me at ${email}.
 
 `
 
@@ -110,7 +110,7 @@ function generateReadme () {
             },
             {
                 type: 'input',
-                name: 'tests',
+                name: 'testing',
                 message: 'Please enter testing instructions:',
             },
         ])
@@ -128,7 +128,7 @@ function generateReadme () {
 };
 
 const addBadge = (answers) => {
-    
+
     if (answers.license === 'MIT License') {
         answersNew.push( { badge: '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'});
     } else if (answers.license === 'Apache License 2.0') {
