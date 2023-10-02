@@ -199,11 +199,8 @@ const createLicense = (answers) => {
     };
 };
 
-// TODO: Create a function to initialize app
 function init() {
     generateReadme();
 };
 
-// Function call to initialize app
-// What is purpose of having init function here? When using terminal to initialize.
 init();
