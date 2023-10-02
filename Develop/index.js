@@ -38,7 +38,7 @@ ${usage}
 
 ## License
 
-This application is covered under the ${license} (c) ${year}, ${fullName}. Please refer to LICENSE.md for more details.
+This project is licensed under the ${license} (c) ${year}, ${fullName}. Please refer to LICENSE.md for more details.
 
 ## Contributing
 
@@ -50,7 +50,7 @@ ${testing}
 
 ## Questions
 
-Please refer to my [GitHub profile](https://github.com/${github}) to answer any questions you may have about this project. To ask additional questions or report any issues, please email me at ${email}.
+Please refer to my [GitHub profile](https://github.com/${github}). If you have any additional questions or want to report an issue, please email me at ${email}.
 
 `
 
@@ -60,7 +60,7 @@ function generateReadme () {
             {
                 type: 'input',
                 name: 'fullName',
-                message: 'Hello! Who created this project?',
+                message: 'Who created this project?',
             },
             {
                 type: 'input',
@@ -106,12 +106,12 @@ function generateReadme () {
             {
                 type: 'input',
                 name: 'contributing',
-                message: 'Please enter contribution guidelines:',
+                message: 'Please enter contribution guidelines for the user:',
             },
             {
                 type: 'input',
                 name: 'testing',
-                message: 'Please enter testing instructions:',
+                message: 'Please enter testing instructions for the user:',
             },
         ])
         .then((answers) => {
@@ -130,19 +130,19 @@ function generateReadme () {
 const addBadge = (answers) => {
 
     if (answers.license === 'MIT License') {
-        answersNew.push( { badge: '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'});
+        answersNew.push( { badge: '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#license)'});
     } else if (answers.license === 'Apache License 2.0') {
-        answersNew.push( { badge: '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'});
+        answersNew.push( { badge: '[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](#license)'});
     } else if (answers.license === 'ISC License') {
-        answersNew.push( { badge: '[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)'});
+        answersNew.push( { badge: '[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](#license)'});
     } else if (answers.license === 'GNU General Public License v3.0') {
-        answersNew.push( { badge: '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)'});
+        answersNew.push( { badge: '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](#license)'});
     } else if (answers.license === 'Mozilla Public License 2.0') {
-        answersNew.push( { badge: '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)'});
+        answersNew.push( { badge: '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](#license)'});
     } else if (answers.license === 'Boost Software License 1.0') {
-        answersNew.push( { badge: '[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)'});
+        answersNew.push( { badge: '[![License: Boost 1.0](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](#license)'});
     } else if (answers.license === 'The Unlicense') {
-        answersNew.push( { badge: '[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)'});
+        answersNew.push( { badge: '[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](#license)'});
     };
 };
 
