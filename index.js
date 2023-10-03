@@ -3,6 +3,7 @@ const fs = require('fs');
 const licensing = require('./licenses.js')
 
 const answersNew = [];
+
 const writeToFile = ([{ fullName, github, email, title, description, installation, usage, license, year, contributing, testing }, { badge }]) =>
 `
 # ${title}
@@ -24,9 +25,9 @@ ${description}
 
 5. [Contributing](#contributing)
 
-6. [Testing] (#testing)
+6. [Testing](#testing)
 
-7. [Questions] (#questions)
+7. [Questions](#questions)
 
 ## Installation
 
@@ -54,7 +55,7 @@ Please refer to my [GitHub profile](https://github.com/${github}). If you have a
 
 `
 
-function generateReadme () {
+const generateReadme = () => {
     inquirer
         .prompt ([
             {
